@@ -1,0 +1,13 @@
+[tool.poetry]
+name = "blender-renderfarm"
+version = "0.1.0"
+description = ""
+authors = ["Radek Goláň jr. <r.golan@protonmail.com>"]
+
+[tool.poetry.dependencies]
+python = "*"
+requests = "^2.19"
+
+[tool.poetry.dev-dependencies]
+pytest = "^3.0"
+pylint = "^2.1"
