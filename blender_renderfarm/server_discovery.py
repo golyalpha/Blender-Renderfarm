@@ -1,14 +1,13 @@
 import socket, ipaddress
 from threading import Thread
 from requests import get
-__version__ = '0.1.0'
 
 def check_port(ip, port, results):
     socket_obj = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     socket.setdefaulttimeout(1)
     result = socket_obj.connect_ex((ip, port))
     socket_obj.close()
-    results.append(ip if result == 0 else None)
+    results.append(ip if result == 0 else False)
 
 
 def discover_nodes(interface=ipaddress.ip_interface(socket.gethostbyname(socket.getfqdn())+"/24")):
@@ -17,7 +16,7 @@ def discover_nodes(interface=ipaddress.ip_interface(socket.gethostbyname(socket.
     threads = [Thread(target=check_port, args=(ip.exploded, 8080, nodes)) for ip in ips]
     for thread in threads: thread.start()
     for thread in threads: thread.join()
-    nodes = [node for node in nodes if node is not None]
+    nodes = [node for node in nodes if node]
     clean_nodes = []
     for node in nodes:
         data = get(f"http://{node}:8080/info.txt")
