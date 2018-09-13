@@ -1,3 +1,6 @@
+"""
+Module containing functions to discover Blender Frameservers and other utility functions
+"""
 import socket, ipaddress
 from threading import Thread
 from requests import get
