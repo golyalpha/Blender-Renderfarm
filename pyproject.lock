@@ -40,6 +40,15 @@ version = "18.2.0"
 
 [[package]]
 category = "main"
+description = "Blender as a python module"
+name = "bpy"
+optional = false
+platform = "*"
+python-versions = ">=3.4.0"
+version = "1.2.3"
+
+[[package]]
+category = "main"
 description = "Python package for providing Mozilla's CA Bundle."
 name = "certifi"
 optional = false
@@ -326,7 +335,7 @@ python-versions = "*"
 version = "1.10.11"
 
 [metadata]
-content-hash = "b0b1633499c0e1b7e5a16f390bc31cf2806a4eaa8efb8b5747e0d4b07c0e0572"
+content-hash = "94d22893675e9caf13d0068e8ec41a53cb219295920f3c898111fc6d7b60d490"
 platform = "*"
 python-versions = "*"
 
@@ -334,6 +343,7 @@ python-versions = "*"
 astroid = ["292fa429e69d60e4161e7612cb7cc8fa3609e2e309f80c224d93a76d5e7b58be", "c7013d119ec95eb626f7a2011f0b63d0c9a095df9ad06d8507b37084eada1a8d"]
 atomicwrites = ["0312ad34fcad8fac3704d441f7b317e50af620823353ec657a53e981f92920c0", "ec9ae8adaae229e4f8446952d204a3e4b5fdd2d099f9be3aaf556120135fb3ee"]
 attrs = ["10cbf6e27dbce8c30807caf056c8eb50917e0eaafe86347671b57254006c3e69", "ca4be454458f9dec299268d472aaa5a11f67a4ff70093396e1ceae9c76cf4bbb"]
+bpy = ["039d3f37f40aca0497998ff7cd73bada523402e64b40d165dda46850127a71da", "21a021cb0c6e3e914d752c8cc03d6f156ac95456b6eb75068197148426fdab52", "54eecf225b0b32faee9eccf4bc26e9d59caa78e508fc66907d650e7fba151813", "78004a95a66ff853c0f62717c7d1734b5aa5353a5e85f1a6d055172a29f37e6e", "7a596fd6cebc8eb7af0db2c410d14c81d016c4197f16345d6117c00f0b29f97d", "ca3597c32e0dbca86dbb80a9822642486f95a832477d070fe14aa0bdb1cab8b2", "cdb6993722c2007d9d3f6c1ee2a3509441fc8366903316644b24af52f83a58a5", "dbab1cec8910a0dbf4ae6223e4c4cbbb086ec5cf7738073894162605eff6e6f1", "f858e77a1dffa6b8ef880c5aa5f2d8582aee187332fc9b64329f35e17e50d044"]
 certifi = ["376690d6f16d32f9d1fe8932551d80b23e9d393a8578c5633a2ed39a64861638", "456048c7e371c089d0a77a5212fb37a2c2dce1e24146e3b7e0261736aaeaa22a"]
 chardet = ["84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae", "fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"]
 colorama = ["463f8483208e921368c9f306094eb6f725c6ca42b0f97e313cb5d5512459feda", "48eb22f4f8461b1df5734a074b57042430fb06e1d61bd1e11b078c0fe6d7a1f1"]
