@@ -1,1 +1,1 @@
-from server_discovery import discover_nodes
+from blender_renderfarm.server_discovery import discover_nodes

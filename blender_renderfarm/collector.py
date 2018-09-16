@@ -4,7 +4,7 @@ Module containing functions to collect rendered frames from the render nodes.
 import requests
 from threading import Thread
 from tempfile import mkdtemp
-from server_discovery import get_info
+from blender_renderfarm.server_discovery import get_info
 from json import loads, dumps
 from os import rmdir
 from os.path import join as pjoin
