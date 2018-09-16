@@ -1,6 +1,7 @@
 from blender_renderfarm.server_discovery import discover_nodes, check_port
 import socket
 
+
 def test_discovery_empty():
     assert discover_nodes() == []
 
