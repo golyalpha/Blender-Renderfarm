@@ -1,14 +1,17 @@
 """
 Module containing functions to collect rendered frames from the render nodes.
 """
-import requests
-from threading import Thread
-from tempfile import mkdtemp
-from blender_renderfarm.server_discovery import get_info
-from json import loads, dumps
+import logging
+from json import dumps, loads
 from os import rmdir
 from os.path import join as pjoin
-import logging
+from tempfile import mkdtemp
+from threading import Thread
+
+import requests
+
+from blender_renderfarm.server_discovery import get_info
+
 
 def info_wrapper(node, results):
     results.append((get_info(node), node))

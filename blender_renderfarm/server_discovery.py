@@ -1,11 +1,15 @@
 """
 Module containing functions to discover Blender Frameservers and other utility functions
 """
-import socket, ipaddress
+import ipaddress
+import socket
 from threading import Thread
-from requests import get
 
-def check_port(ip, port, results):
+from requests import get
+from requests.exceptions import Timeout
+
+
+def check_port(ip:str, port:int, results:list):
     """
     Check if port is open on a given IP, and append the ip to results if it is.  
 
@@ -23,7 +27,7 @@ def check_port(ip, port, results):
         results.append(ip)
 
 
-def get_info(node):
+def get_info(node:str):
     """
     Get render info from the node.  
 
@@ -31,7 +35,10 @@ def get_info(node):
     :return: Dict containing gathered info (empty if failed)  
     """
     info = {}
-    data = get(f"http://{node}:8080/info.txt")
+    try:
+        data = get(f"http://{node}:8080/info.txt", timeout=1)
+    except Timeout:
+        return {}
     if data.status_code == 200:
         lines = data.text.strip().split("\n")
         for line in lines:
@@ -39,7 +46,7 @@ def get_info(node):
             info[pair[0]] = int(pair[1])
     return info
 
-def discover_nodes(interface=ipaddress.ip_interface(socket.gethostbyname(socket.getfqdn())+"/24")):
+def discover_nodes(interface:ipaddress.IPv4Interface=ipaddress.ip_interface(socket.gethostbyname(socket.getfqdn())+"/24")):
     """
     Attempts to discover all running Blender Framserver nodes on the local network.  
 
