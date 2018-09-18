@@ -1,1 +1,3 @@
-from blender_renderfarm.server_discovery import discover_nodes
+from server_discovery import discover_nodes
+
+print(discover_nodes())
