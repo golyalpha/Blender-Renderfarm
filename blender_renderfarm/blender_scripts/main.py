@@ -20,8 +20,8 @@ def handle_render():
                     print("Receiving blend file from {}".format(addr))
                     while True:
                         data = conn.recv(1024)
-                        if data == "PING":
-                            conn.sendall("PONG")
+                        if data == b"PING":
+                            conn.sendall(b"PONG")
                             break
                         if not data:
                             waiting = False
