@@ -9,7 +9,7 @@ from requests import get
 from requests.exceptions import Timeout
 
 
-def check_port(ip:str, port:int, results:list):
+def check_port(ip:str, results:list, port:int=3558):
     """
     Check if port is open on a given IP, and append the ip to results if it is.  
 
@@ -18,13 +18,21 @@ def check_port(ip:str, port:int, results:list):
     :param results: Object implementing the `.append` method. 
     Stores IPs that have the given port open.  
     """
+    data = b""
     socket_obj = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     socket.setdefaulttimeout(1)
-    result = socket_obj.connect_ex((ip, port))
-    socket_obj.close()
-    print(result)
-    if result == 0:
-        results.append(ip)
+    socket_obj.settimeout(60)
+    try:
+        socket_obj.connect((ip, port))
+        socket_obj.sendall(b"PING")
+        data = socket_obj.recv(1024)
+        socket_obj.close()
+        if data == b"PONG":
+            results.append(ip)
+    except socket.timeout:
+        pass
+    except ConnectionError:
+        pass
 
 
 def get_info(node:str):
@@ -58,12 +66,7 @@ def discover_nodes(interface:ipaddress.IPv4Interface=ipaddress.ip_interface(sock
     """
     ips = interface.network.hosts()
     nodes = []
-    checker_threads = [Thread(target=check_port, args=(ip.exploded, 8080, nodes)) for ip in ips]
+    checker_threads = [Thread(target=check_port, args=(ip.exploded, nodes)) for ip in ips]
     for thread in checker_threads: thread.start()
     for thread in checker_threads: thread.join()
-    clean_nodes = []
-    for node in nodes:
-        info = get_info(node)
-        if "start" in info and "end" in info:
-            clean_nodes.append(node)
-    return clean_nodes
+    return nodes
