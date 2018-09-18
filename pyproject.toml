@@ -12,3 +12,4 @@ bpy = "^1.2"
 [tool.poetry.dev-dependencies]
 pytest = "^3.0"
 pylint = "^2.1"
+pytest-timeout = "^1.3"
