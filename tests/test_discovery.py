@@ -18,9 +18,15 @@ def test_discovery_filled():
         blender = Popen(["blender", "-P", "tests/resources/scripts/main.py", "-b"])
         # TODO: Figure out a more intelligent way to wait for Blender to load.
         sleep(30)
-        assert discover_nodes() != []
-        # TODO: Figure out a mulit-platform way to force-kill Blender
-        print("Don't forget to kill blender")
+        nodes = discover_nodes()
+        assert nodes != []
+        for node in nodes:
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sck:
+                sck.connect((node, 3558))
+                sck.sendall(b"STOP")
+                if sck.recv(1024) != b"ACK":
+                    raise Exception("Blender failed to respond properly.")
+            
 
 
 def test_get_info():

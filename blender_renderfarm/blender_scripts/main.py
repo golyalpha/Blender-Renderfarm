@@ -23,6 +23,9 @@ def handle_render():
                         if data == b"PING":
                             conn.sendall(b"PONG")
                             break
+                        if data == b"STOP":
+                            conn.sendall(b"ACK")
+                            exit(0)
                         if not data:
                             waiting = False
                             break
