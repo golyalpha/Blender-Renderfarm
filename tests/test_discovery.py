@@ -13,7 +13,7 @@ def test_discovery_empty():
     assert discover_nodes() == []
 
 
-def test_discovery_filled():
+def test_discovery_running():
     if run("blender --help", capture_output=True):
         blender = Popen(["blender", "-P", "tests/resources/scripts/main.py", "-b"])
         # TODO: Figure out a more intelligent way to wait for Blender to load.
