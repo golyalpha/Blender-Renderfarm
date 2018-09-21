@@ -10,7 +10,7 @@ from threading import Thread
 
 import requests
 
-from blender_renderfarm.server_discovery import get_info
+from blender_renderfarm.utils import get_info
 
 
 def render_collector(node, start, end, step, offset, directory):
