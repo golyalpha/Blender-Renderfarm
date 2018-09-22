@@ -78,6 +78,18 @@ version = "0.3.9"
 platform = "win32"
 
 [[package]]
+category = "main"
+description = "Python bindings for FFmpeg - with complex filtering support"
+name = "ffmpeg-python"
+optional = false
+platform = "*"
+python-versions = "*"
+version = "0.1.16"
+
+[package.dependencies]
+future = "*"
+
+[[package]]
 category = "dev"
 description = "Python function signatures from PEP362 for Python 2.6, 2.7 and 3.2+"
 name = "funcsigs"
@@ -93,6 +105,15 @@ version = "*"
 
 [package.requirements]
 python = "<3.0"
+
+[[package]]
+category = "main"
+description = "Clean single-source support for Python 3 and 2"
+name = "future"
+optional = false
+platform = "UNKNOWN"
+python-versions = "*"
+version = "0.16.0"
 
 [[package]]
 category = "dev"
@@ -347,7 +368,7 @@ python-versions = "*"
 version = "1.10.11"
 
 [metadata]
-content-hash = "8016bb7b5a5888aeb58f21ff2efea549beef2122cf679a9dc6ac02604c0b57cd"
+content-hash = "0f9d8b84b4c2d21b5e9c93d098eb1d508e4fddd8f13b4b14887e5f637684badc"
 platform = "*"
 python-versions = "*"
 
@@ -359,7 +380,9 @@ bpy = ["039d3f37f40aca0497998ff7cd73bada523402e64b40d165dda46850127a71da", "21a0
 certifi = ["376690d6f16d32f9d1fe8932551d80b23e9d393a8578c5633a2ed39a64861638", "456048c7e371c089d0a77a5212fb37a2c2dce1e24146e3b7e0261736aaeaa22a"]
 chardet = ["84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae", "fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"]
 colorama = ["463f8483208e921368c9f306094eb6f725c6ca42b0f97e313cb5d5512459feda", "48eb22f4f8461b1df5734a074b57042430fb06e1d61bd1e11b078c0fe6d7a1f1"]
+ffmpeg-python = ["721db04120ad110619c17dd7a72db8d21a6738d721be1b3b4c72a7516e6b07f4"]
 funcsigs = ["330cc27ccbf7f1e992e69fef78261dc7c6569012cf397db8d3de0234e6c937ca", "a7bb0f2cf3a3fd1ab2732cb49eba4252c2af4240442415b4abce3b87022a8f50"]
+future = ["e39ced1ab767b5936646cedba8bcce582398233d6a627067d4c6a454c90cfedb"]
 futures = ["9ec02aa7d674acb8618afb127e27fde7fc68994c0437ad759fa094a574adb265", "ec0a6cb848cc212002b9828c3e34c675e0c9ff6741dc445cab6fdd4e1085d1f1"]
 idna = ["156a6814fb5ac1fc6850fb002e0852d56c0c8d2531923a51032d1b70760e186e", "684a38a6f903c1d71d6d5fac066b58d7768af4de2b832e426ec79c30daa94a16"]
 isort = ["1153601da39a25b14ddc54955dbbacbb6b2d19135386699e2ad58517953b34af", "b9c40e9750f3d77e6e4d441d8b0266cf555e7cdabdcff33c4fd06366ca761ef8", "ec9ef8f4a9bc6f71eec99e1806bfa2de401650d996c59330782b89a5555c1497"]

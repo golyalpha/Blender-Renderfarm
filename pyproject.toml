@@ -8,6 +8,7 @@ authors = ["Radek Goláň jr. <r.golan@protonmail.com>"]
 python = "*"
 requests = "^2.19"
 bpy = "^1.2"
+ffmpeg-python = "^0.1.16"
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.0"
