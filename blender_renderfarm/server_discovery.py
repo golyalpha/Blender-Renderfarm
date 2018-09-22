@@ -3,12 +3,11 @@ Module containing functions to discover Blender Frameservers and other utility f
 """
 import ipaddress
 import socket
-from typing import Union
 from threading import Thread
 
 from requests import get
 from requests.exceptions import Timeout
-from blender_renderfarm.utils import construct_sck, ping_node
+from utils import construct_sck, ping_node
 
 
 def check_port(ip:str, results:list, port:int=3558):
@@ -28,7 +27,7 @@ def check_port(ip:str, results:list, port:int=3558):
     except ConnectionError:
         pass
 
-def discover_nodes(interface:Union(ipaddress.IPv4Interface,ipaddress.IPv6Interface)=ipaddress.ip_interface(socket.gethostbyname(socket.getfqdn())+"/24")):
+def discover_nodes(interface:ipaddress.IPv4Interface=ipaddress.ip_interface(socket.gethostbyname(socket.getfqdn())+"/24")):
     """
     Attempts to discover all running Blender Framserver nodes on the local network.  
 
