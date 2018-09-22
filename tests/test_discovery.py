@@ -24,3 +24,4 @@ def test_discovery_running():
             sck.sendall(b"STOP")
             if sck.recv(1024) != b"ACK":
                 raise Exception("Blender failed to respond properly.")
+        blender.kill()
