@@ -5,7 +5,7 @@ Includes a bpy script to be run on the Blender nodes to allow Blender to receive
 ## Installation
 1. Clone the repo.
 2. Get [Poetry](https://poetry.eustace.io)
-3. Run `poetry install`
+3. Run `poetry install --no-dev`
 4. Get [FFmpeg](https://www.ffmpeg.org/)
 4. Start your Blender nodes with `blender -P main.py -b` (main.py is located in blender_renderfarm/blender_scripts)
 
