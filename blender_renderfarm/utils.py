@@ -35,7 +35,7 @@ def construct_sck():
     Constructs socket with 60sec timeout and returns it.
     """
     socket_obj = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    socket_obj.settimeout(60)
+    socket_obj.settimeout(5)
     return socket_obj
 
 
