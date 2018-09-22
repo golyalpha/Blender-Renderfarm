@@ -14,3 +14,4 @@ After installing the package, you can use `poetry run py blender_renderfarm` to 
 
 ## TODO
  - Add a `farmspec` file for specifying where are the Blender nodes (skip the autodiscovery step)
+ - Autogenerate a `farmspec` file (if not present) after the first node discovery has been done
