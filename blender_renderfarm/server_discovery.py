@@ -7,7 +7,8 @@ from threading import Thread
 
 from requests import get
 from requests.exceptions import Timeout
-from utils import construct_sck, ping_node
+from time import time
+from .utils import construct_sck, ping_node
 
 
 def check_port(ip:str, results:list, port:int=3558):
@@ -27,19 +28,23 @@ def check_port(ip:str, results:list, port:int=3558):
     except ConnectionError:
         pass
 
-def discover_nodes(interface:ipaddress.IPv4Interface=ipaddress.ip_interface(socket.gethostbyname(socket.getfqdn())+"/24")):
+def discover_nodes():
     """
     Attempts to discover all running Blender Framserver nodes on the local network.  
 
-    :param interface: (Optional) IPvXInterface object containing the IP and subnet
-    mask where the nodes can be located.
-    :type interface: Union(IPv4Interface, IPv6Interface)
-    :return: Returns list of IPvXAddress objects with a currently active Blender Frameserver instance.
+    :return: List of IPs of active nodes.
     :rtype: list
     """
-    ips = interface.network.hosts()
     nodes = []
-    checker_threads = [Thread(target=check_port, args=(ip.exploded, nodes)) for ip in ips]
-    for thread in checker_threads: thread.start()
-    for thread in checker_threads: thread.join()
+    sck = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sck.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+    sck.bind(("", 3558))
+    sck.settimeout(10)
+    now = time()
+    while time()-now < 10:
+        data, addr = sck.recvfrom(1024)
+        if data == b"BR_NOTIFY" and addr[0] not in nodes:
+            print("Discovered new node:", addr[0])
+            nodes.append(addr[0])
+            now = time()
     return nodes

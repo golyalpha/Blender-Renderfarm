@@ -1,8 +1,8 @@
-from server_discovery import discover_nodes
-from send_blend import send_to_nodes
-from collector import collect_frames
-from encoder import encode_frames
-from utils import get_info
+from .server_discovery import discover_nodes
+from .send_blend import send_to_nodes
+from .collector import collect_frames
+from .encoder import encode_frames
+from .utils import get_info
 from tempfile import TemporaryDirectory
 from tkinter import filedialog
 from tkinter import Tk
@@ -24,5 +24,5 @@ with TemporaryDirectory() as renderDir:
     print("Collecting frames.")
     collect_frames(nodes, renderDir)
     print("Encoding frames.")
-    encode_frames(renderDir, outfile, info["rate"])
+    encode_frames(renderDir, outfile, info["rate"], len(str(info["end"])))
     print("Done!")

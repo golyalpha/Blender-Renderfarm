@@ -8,15 +8,17 @@ from os.path import join as pjoin
 from threading import Thread
 import requests
 
-from utils import get_info
+from .utils import get_info
 
 
 def frame_collector(node:str, start:int, end:int, step:int, offset:int, directory:str):
-    for frame in range(start+offset, end+offset+1, step):
-        with open(pjoin(directory, "%03d.ppm" % frame), "wb") as framefile:
-            framefile.write(requests.get(f"http://{node}:8080/images/ppm/{frame}.ppm").content)
+    for frame in range(start+offset, end+1, step):
+        print("Collecting frame", frame)
+        with open(pjoin(directory, f"{frame:0{len(str(end))}}.png"), "wb") as framefile:
+            framefile.write(requests.get(f"http://{node}:8080/image/{frame:0{len(str(end))}}.png").content)
     try:
-        requests.get(f"http://{node}:8080/close.txt")
+        requests.get(f"http://{node}:8080/close.txt", timeout=10)
+        print("Frames from", node, "collected.")
     except ConnectionError:
         pass
 
