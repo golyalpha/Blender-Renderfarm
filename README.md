@@ -1,5 +1,7 @@
 # Note
-This repository depends on functionality within Blender that is buggy, and has been removed from the latest versions of Blender. You might need a modified build of Blender 2.7 or earlier with a patched frameserver that supports non-sequential frame requests. This patch is out of this project's scope and therefore not included. I'm currently looking for alternative solutions, but until found and implemented, this repository will not receive any further updates or support.
+~~This repository depends on functionality within Blender that is buggy, and has been removed from the latest versions of Blender. You might need a modified build of Blender 2.7 or earlier with a patched frameserver that supports non-sequential frame requests. This patch is out of this project's scope and therefore not included. I'm currently looking for alternative solutions, but until found and implemented, this repository will not receive any further updates or support.~~
+
+The above is no longer true, as a suitable replacement for the frameserver has now been included with the blender script. Please note that this no longer follows the standard Frameserver specification and serves PNGs, instead of PPM files.
 
 # Blender Renderfarm
 Python package for rendering blendfiles with multiple Blender nodes on the network.
